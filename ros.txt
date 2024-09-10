@@ -1,0 +1,181 @@
+after install ros noitic from google or any website do that:
+create work space 
+$ mkdir -p ~/catkin_ws/src
+$ cd ~/catkin_ws/
+$ catkin_make
+------------------------------------------------------------------------------/
+create_pkg:
+$ cd ~/catkin_ws/src
+catkin_create_pkg <package_name> [depend1] [depend2] [depend3]
+$ catkin_create_pkg course_pkg roscpp rospy std_msgs
+------------------------------------------------------------------------------/
+->to show hiden file press ctrl+H
+------------------------------------------------------------------------------/
+From your shell, install Git using apt-get:
+○ $ sudo apt-get update
+○ $ sudo apt-get install git
+Verify the installation was successful by typing git --version :
+○ $ git --version
+○ >>>>> git version 2.17.1.
+------------------------------------------------------------------------------/
+>>Clone a repo on local system:
+$ git clone "http.///name of rep"
+------------------------------------------------------------------------------/
+->>Push and pull
+To push your updates from local repo to github
+Stage your changes :
+$ git add .
+commit your changes :
+$ git commit -m "initial commit"
+Push your commit to the target branch:
+$ git push origin main
+To push your updates from local repo to github
+$ git pull
+------------------------------------------------------------------------------/
+to open or create file :
+$ gedit "name of file"
+------------------------------------------------------------------------------/
+>>tutlesiem robot:
+to open eny code open ros mater:
+$ roscore 
+-->if see warining do not warry is want to clean storge
+Ex:Done checking log file disk usage. Usage is <1GB.
+-->if you want to out from roscore or any run commend press"ctrl+c"
+-->to run any code :
+Ex:rosrun [package_name] [node_name]
+$ rosrun turtlesim turtlesim_node
+Note: to show option of the commend press "double tap"
+------------------------------------------------------------------------------/
+24. move turtlesim using keyboard:
+$ rosrun turtlesim turtlesim_node 
+$ rosrun turtlesim turtle_teleop_key
+------------------------------------------------------------------------------/
+25. draw square node with turtlesim
+ $ rosrun turtlesim draw_square 
+ ------------------------------------------------------------------------------/
+26. Discover ROS Echosystem using Rqt_graph:
+$ rosrun rqt_graph rqt_graph
+-------------------------------------------------------------------------------/
+27. rosnode commands:
+$ rosnode list 
+--->to show information of node
+output:
+/rosout --->ros master
+/teleop_turtle -->puplisher
+/turtlesim     -->Subscriper
+$ rosnode info /turtlesim 
+-->all information of node.----//-------//------//-----//
+EX:Node [/turtlesim]
+Publications: 
+ * /rosout [rosgraph_msgs/Log]
+ * /turtle1/color_sensor [turtlesim/Color]
+ * /turtle1/pose [turtlesim/Pose]
+
+Subscriptions: 
+ * /turtle1/cmd_vel [geometry_msgs/Twist]
+
+Services: 
+ * /clear
+ * /kill
+ * /reset
+ * /spawn
+ * /turtle1/set_pen
+ * /turtle1/teleport_absolute
+ * /turtle1/teleport_relative
+ * /turtlesim/get_loggers
+ * /turtlesim/set_logger_level
+
+
+contacting node http://abdulrhman:34827/ ...
+Pid: 4564
+Connections:
+ * topic: /rosout
+    * to: /rosout
+    * direction: outbound (50161 - 127.0.0.1:37114) [28]
+    * transport: TCPROS
+ * topic: /turtle1/cmd_vel
+    * to: /teleop_turtle (http://abdulrhman:43775/)
+    * direction: inbound (60200 - abdulrhman:33655) [30]
+    * transport: TCPROS
+----//-------//------//-----//-------//------//-------//-------//
+28. rostopic commands:
+>>The rostopic tool allows you to get information about ROS topics. 
+>>rostopic list returns a list of all topics currently subscribed to and published. 
+$ rostopic list
+>>rostopic echo shows the data published on a topic. 
+>>rostopic echo [topic]
+$ rostopic echo /turtle1/cmd_vel
+--rostopic echo /turtle1/command_velocity--
+$ rostopic info /turtle1/cmd_vel
+Ex:Type: geometry_msgs/Twist----//-------//------//-----//-------//
+
+Publishers: 
+ * /teleop_turtle (http://abdulrhman:43775/)
+
+Subscribers: 
+ * /turtlesim (http://abdulrhman:34827/)
+ * /rostopic_6396_1725955975120 (http://abdulrhman:39337/)
+----//-------//------//-----//-------//------//-------//-------//
+29. geometry_msgs/Twist Message:
+----------------------------------------------------------------/
+30. Introduction for turtlebot 3:
+31. Clone and Build Turtlebot3:
+● $ cd ~/catkin_ws/src/
+● $ git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+● $ git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git
+● $ git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+● $ cd ~/catkin_ws
+● $ catkin_make
+● $ source devel/setup.bash
+● $ export TURTLEBOT3_MODEL=burger
+● $ roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
+----------------------------------------------------------------/
+33. Run Turtlebot3 on gazebo:
+● $ source devel/setup.bash
+● $ export TURTLEBOT3_MODEL=burger
+● $ roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
+----------------------------------------------------------------/
+34. move turtlebot3 using keyboard:
+$ cd course_ws/
+$ source devel/setup.bash
+$ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+----------------------------------------------------------------/
+35. Discover more about Turtlebot3 sensors, topics and msgs:
+$ rosnode list
+$ rostopic list
+$ rostopic  echo /cmd_vel
+$ rosrun rqt_graph rqt_graph
+---------------------------------------------------------------/
+36. Install RPLIDAR ROS pkg:
+$ sudo apt-get install ros-noetic-rplidar-ros
+$ roscd rplidar_ros/
+>> use this commend to go the pkg of ros
+---------------------------------------------------------------/
+37. Intoduction To LIDAR Sensor and laserscan msg:
+---------------------------------------------------------------/
+38. RPlidar wiring and documentation:
+---------------------------------------------------------------/
+39. Run Rplidar with ROS pkg:
+Launch File Examples:
+$ ls -l /dev |grep ttyUSB
+$ sudo chmod 666 /dev/ttyUSB0
+Note: you can change the the number of 0 if the usb is take diffrenet number in pc.
+ $ roslaunch rplidar_ros view_rplidar.launch    #for rplidar A1/A2
+ 
+ Start a rplidar node and run rplidar client process to print the raw scan result
+ $ roslaunch rplidar_ros rplidar.launch  #for rplidar A1/A2
+ >>that commend it most used.
+ $ rostopic list 
+>>to show information of rplider
+ $ rostopic info /scan
+ >>to show more inf
+ $rostopic echo /scan
+ ---------------------------------------------------------------/
+#RPLIDAR A1 with ROS
+#Link-->https://wiki.ros.org/rplidar
+● sudo apt-get install ros-noetic-rplidar-ros
+● ls -l /dev |grep ttyUSB
+● sudo chmod 666 /dev/ttyUSB0
+● roslaunch rplidar_ros rplidar.launch
+● roslaunch rplidar_ros view_rplidar.launch
+
